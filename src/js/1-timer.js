@@ -1,6 +1,8 @@
 
 import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
+import iziToast from "izitoast";
+import "izitoast/dist/css/iziToast.min.css";
 
 
 const daysEl = document.querySelector('[data-days]');
@@ -24,10 +26,12 @@ const options = {
     onClose(selectedDates) {
         const selectedDate = selectedDates[0];
         console.log("Вибрана дата:", selectedDate);
-        
+      
         // Перевірка: чи дата в майбутньому?
         if (selectedDate <= new Date()) {
-            alert("Please choose a date in the future");
+            iziToast.error({
+            message: "Please choose a date in the future"
+            });
             startBtn.disabled = true;
             userSelectedDate = null;
         } else {
@@ -48,6 +52,7 @@ function handleClickBtn(event) {
     }
     
     console.log("Запуск таймера до:", userSelectedDate);
+     startBtn.disabled = true;
     
     // Тут запускаєте зворотній відлік
     startCountdown(userSelectedDate);
@@ -66,6 +71,7 @@ function startCountdown(endDate) {
             hoursEl.textContent = "00";
             minutesEl.textContent = "00";
             secondsEl.textContent = "00";
+            //startBtn.disabled = false;
             return;
         }
         
