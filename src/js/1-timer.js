@@ -30,7 +30,8 @@ const options = {
         // Перевірка: чи дата в майбутньому?
         if (selectedDate <= new Date()) {
             iziToast.error({
-            message: "Please choose a date in the future"
+            message: "Please choose a date in the future",
+            position: 'topRight',
             });
             startBtn.disabled = true;
             userSelectedDate = null;
