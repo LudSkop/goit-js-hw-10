@@ -16,13 +16,15 @@ import "izitoast/dist/css/iziToast.min.css";
          createPromise(delay, isSuccess)
     .then(delay => {
         iziToast.success({
-        message: `✅ Fulfilled promise in ${delay}ms`
+        message: `✅ Fulfilled promise in ${delay}ms`,
+        position: 'topRight',
     });
      
     })
     .catch(delay => {
-        iziToast.success({
-        message: `❌ Rejected promise in ${delay} ms`
+        iziToast.error({
+        message: `❌ Rejected promise in ${delay} ms`,
+        position: 'topRight',
     });
     
     })
